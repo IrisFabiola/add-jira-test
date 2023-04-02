@@ -1,13 +1,16 @@
 {
   "name": "add-jira-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "bin": "src/index.ts",
+  "bin": {
+    "add-jira-test": "./dist/bin.js"
+  },
   "scripts": {
     "start": "ts-node src/bin.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepublish": "tsc --outDir ./dist/"
   },
   "author": "",
   "license": "ISC",

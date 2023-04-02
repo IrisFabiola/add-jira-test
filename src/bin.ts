@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node --files
+#!/usr/bin/env node
 
 import { writeFile } from 'fs/promises';
 import { Version3Client } from 'jira.js';
