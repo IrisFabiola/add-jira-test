@@ -1,10 +1,14 @@
 #!/usr/bin/env -S ts-node --files
 
 import * as dotenv from 'dotenv';
+import { readFileSync } from 'fs';
+import { writeFile } from 'fs/promises';
+import Mustache from 'mustache';
 import { groupby, map } from 'itertools';
 import { Version3Client } from 'jira.js';
 import { type Document } from 'jira.js/out/version3/models';
 import minimist from 'minimist';
+import path from 'path';
 
 dotenv.config();
 
@@ -25,12 +29,15 @@ const client = new Version3Client({
 (async () => {
 	const args = minimist(process.argv.slice(2));
 	const key = args.key as string;
+	const fileName = args.output as string;
 
 	const issue = await client.issues.getIssue({
 		issueIdOrKey: key,
 	});
 
-	const { description } = issue.fields;
+	const { fields } = issue;
+
+	const { description, summary } = fields;
 
 	if (!description?.content) {
 		throw new Error('ticket does not have description');
@@ -38,7 +45,17 @@ const client = new Version3Client({
 
 	const parsed = parseContent(description.content);
 
-	console.log(parsed);
+	const issueTemplateFile = readFileSync(
+		path.resolve(__dirname, './test.mustache'),
+	).toString();
+
+	const issueTest = Mustache.render(issueTemplateFile, {
+		key,
+		title: summary,
+		...parsed,
+	});
+
+	await writeFile(path.resolve(process.cwd(), fileName), issueTest);
 })();
 
 function parseContent(content: Array<Omit<Document, 'version'>>) {
