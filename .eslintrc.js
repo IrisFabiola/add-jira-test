@@ -9,6 +9,7 @@ module.exports = {
 			extends: ['xo-typescript'],
 			files: ['*.ts', '*.tsx'],
 			rules: {
+				'@typescript-eslint/indent': 'off',
 				'@typescript-eslint/object-curly-spacing': 'off',
 				'@typescript-eslint/naming-convention': [
 					'error',

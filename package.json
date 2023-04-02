@@ -30,10 +30,11 @@
     "typescript": "^5.0.3"
   },
   "dependencies": {
-    "dotenv": "^16.0.3",
+    "@commander-js/extra-typings": "^10.0.3",
+    "commander": "^10.0.0",
     "itertools": "^1.7.1",
     "jira.js": "^2.17.0",
-    "minimist": "^1.2.8",
-    "mustache": "^4.2.0"
+    "mustache": "^4.2.0",
+    "node-config": "^0.0.2"
   }
 }
