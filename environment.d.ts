@@ -4,5 +4,6 @@ declare namespace NodeJS {
 		USERNAME: string;
 		TOKEN: string;
 		HOST: string;
+		TEST_PLAN_LABEL: string;
 	};
 }

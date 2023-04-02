@@ -6,11 +6,18 @@ import { Version3Client } from 'jira.js';
 import minimist from 'minimist';
 import path from 'path';
 import { createTestFromIssue } from './issue';
+import { type Issue } from 'jira.js/out/version3/models';
+import { createTestPlanFromIssue } from './test-plan';
 
 dotenv.config();
 
-if (!process.env.HOST || !process.env.USERNAME || !process.env.TOKEN) {
-	throw new Error('no host provided');
+if (
+	!process.env.HOST ||
+	!process.env.USERNAME ||
+	!process.env.TOKEN ||
+	!process.env.TEST_PLAN_LABEL
+) {
+	throw new Error('missing configs');
 }
 
 const client = new Version3Client({
@@ -32,7 +39,13 @@ const client = new Version3Client({
 		issueIdOrKey: key,
 	});
 
-	const issueTest = await createTestFromIssue(issue, client);
+	const toRender = isTestPlan(issue)
+		? await createTestPlanFromIssue(issue, client)
+		: await createTestFromIssue(issue);
 
-	await writeFile(path.resolve(process.cwd(), fileName), issueTest);
+	await writeFile(path.resolve(process.cwd(), fileName), toRender);
 })();
+
+function isTestPlan(issue: Issue) {
+	return issue.fields.labels.includes(process.env.TEST_PLAN_LABEL);
+}
