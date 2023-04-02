@@ -10,7 +10,7 @@ import { createTestPlanFromIssue } from './test-plan';
 
 const program = new Command()
 	.version('1.0.0')
-	.description('Generate Jest test files from Jira issue keys')
+	.description('Generate test files from Jira issue keys')
 	.argument('<key>', 'Jira key')
 	.option('-o, --output <value>', 'Where to write the output')
 	.option('-h, --host [value]', 'Jira host [possible to setup using file]')

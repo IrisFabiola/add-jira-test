@@ -1,6 +1,6 @@
 # Add Jira test
 
-Use this tool to automatically fetch and generate a jest test file based on a given jira issue.
+Use this tool to automatically fetch and generate a test file based on a given jira issue.
 
 You can read an helpful help message with
 

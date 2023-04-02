@@ -1,5 +1,5 @@
 {
-  "name": "add-jira-jest",
+  "name": "add-jira-test",
   "version": "1.0.0",
   "description": "",
   "bin": "src/index.ts",
