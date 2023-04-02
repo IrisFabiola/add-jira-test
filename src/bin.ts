@@ -14,17 +14,10 @@ const program = new Command()
 	.argument('<key>', 'Jira key')
 	.option('-o, --output <value>', 'Where to write the output')
 	.option('-h, --host [value]', 'Jira host [possible to setup using file]')
-	.option(
-		'--test-plan-label [value]',
-		'Jira host [possible to setup using file]',
-	)
+	.option('--test-plan-label [value]', 'Label for the test plan')
 	.option(
 		'-u, --username [value]',
 		'Jira username [possible to setup using file]',
-	)
-	.option(
-		'-p, --password [value]',
-		'Jira password (needs to be a PAT) [possible to setup using file]',
 	)
 	.option(
 		'-p, --password [value]',

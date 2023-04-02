@@ -13,11 +13,11 @@ npx add-jira-test --help
 Call using `npx`. All of the configs can be set either using CLI args or in a config file (recommended for auth).
 
 ```sh
-npx add-jira-test --config example.json --output=example.spec.ts JIRA-123
+npx add-jira-test --config path/to/config.json --output=path/to/example.spec.ts JIRA-123
 ```
 
 ```json
-// example.json
+// path/to/config.json
 {
   "username": "example@example.org",
   "password": "pat123",
@@ -27,7 +27,7 @@ npx add-jira-test --config example.json --output=example.spec.ts JIRA-123
 ```
 
 ```sh
-npx add-jira-test --username=example@example.org --password=pat123 --host awesome.atlassian.net --test-plan-label=TestPlan --output=example.spec.ts JIRA-123
+npx add-jira-test --username=example@example.org --password=pat123 --host awesome.atlassian.net --test-plan-label=TestPlan --output=path/to/example.spec.ts JIRA-123
 ```
 
 The given ticket can either be a test case or a test plan. In order to identify which is which, you'll need to add a specific label to the JIRA issue. We require it to be set up as well (either via config or CLI)
