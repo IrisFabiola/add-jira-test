@@ -1,6 +1,6 @@
 {
   "name": "add-jira-test",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "bin": {
     "add-jira-test": "./dist/bin.js"
